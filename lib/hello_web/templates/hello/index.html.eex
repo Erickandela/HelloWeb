@@ -1,3 +1,4 @@
 <div class="phx-hero">
-  <h2>Vamonos Perraaas</h2>
+  <!-- <h1>Haciendo pruebas</h1> -->
+  <h2><%= @message %> !</h2>
 </div>
