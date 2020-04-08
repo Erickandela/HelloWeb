@@ -39,7 +39,8 @@ defmodule HelloWeb.Router do
     #forward "/jobs", BackgroundJob.Plug, name: "Hello Phoenix"
 
 
-    get "/", PageController, :index
+    #get "/", PageController, :index
+    get "/our_path/:id", HelloController, :show
     #resources "/reviews", ReviewController
     #Messenger
     #get "/hello", HelloController, :index
