@@ -3,8 +3,9 @@ defmodule HelloWeb.PageController do
 
   def index(conn, _params) do
     conn
-    |> put_resp_content_type("text/xml")
-    |> render("index.xml")
+    |> put_status(:not_found)
+    |> put_view(HelloWeb.ErrorView)
+    |> render("404.html")
      # render(conn, "index.text", message: params["message"])
   end
 end
