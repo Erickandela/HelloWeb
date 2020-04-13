@@ -62,10 +62,10 @@ defmodule HelloWeb.Router do
 
   #Scopes
   # New Route for redirects
-  scope "/", HelloWeb do
-    pipe_through :browser
-    get "/redirect_test", PageController, :redirect_test, as: :redirect_test
-  end
+  # scope "/", HelloWeb do
+  #   pipe_through :browser
+  #   get "/redirect_test", PageController, :redirect_test, as: :redirect_test
+  # end
 
   # scope "/", HelloWeb do
   #   pipe_through :browser
