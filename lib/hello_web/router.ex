@@ -40,6 +40,7 @@ defmodule HelloWeb.Router do
 
 
     get "/", PageController, :index
+    get "/test", PageController, :test
     # get "/", PageController, :show
     # get "/our_path/:id", HelloController, :show
     #resources "/reviews", ReviewController
