@@ -7,7 +7,5 @@ defmodule HelloWeb.PageController do
     # redirect(conn, external: "https://elixir-lang.org/")
   end
 
-  def redirect_test(conn, _params) do
-    text(conn, "Redirect!")
-  end
+
 end
