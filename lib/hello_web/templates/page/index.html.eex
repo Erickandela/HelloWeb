@@ -4,7 +4,7 @@
   <!-- <p><a href="<%= Routes.page_path(@conn, :index) %>"> Link back to this page</a></p> -->
 </section>
 
-<div class="container" id="messages"></div>
+<div id="messages"></div>
 <input id="chat-input" type="text"></input>
 
 <section class="row">

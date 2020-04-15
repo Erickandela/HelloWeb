@@ -18,21 +18,21 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 //
 // In your "lib/web/router.ex":
 //
-//     pipeline :browser do
-//       ...
-//       plug MyAuth
-//       plug :put_user_token
-//     end
-//
-//     defp put_user_token(conn, _) do
-//       if current_user = conn.assigns[:current_user] do
-//         token = Phoenix.Token.sign(conn, "user socket", current_user.id)
-//         assign(conn, :user_token, token)
-//       else
-//         conn
-//       end
-//     end
-//
+    // pipeline :browser do
+    //   ...
+    //   plug OurAuth
+    //   plug :put_user_token
+    // end
+    //
+    // defp put_user_token(conn, _) do
+    //   if current_user = conn.assigns[:current_user] do
+    //     token = Phoenix.Token.sign(conn, "user socket", current_user.id)
+    //     assign(conn, :user_token, token)
+    //   else
+    //     conn
+    //   end
+    // end
+
 // Now you need to pass this token to JavaScript. You can do so
 // inside a script tag in "lib/web/templates/layout/app.html.eex":
 //
@@ -55,12 +55,12 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
-let channel = socket.channel("room:lobby", {})
-let chatInput = document.querySelector("#chat-input")
+let channel           = socket.channel("room:lobby", {})
+let chatInput         = document.querySelector("#chat-input")
 let messagesContainer = document.querySelector("#messages")
 
 chatInput.addEventListener("keypress", event => {
-  if (event.keyCode === 13) {
+  if(event.keyCode === 13){
     channel.push("new_msg", {body: chatInput.value})
     chatInput.value = ""
   }
