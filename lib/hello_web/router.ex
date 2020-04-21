@@ -77,6 +77,12 @@ defmodule HelloWeb.Router do
         assign(conn, :current_user, Hello.Accounts.get_user!(user_id))
       end
   end
+
+ scope "/cms", HelloWeb.CMS, as: :cms do
+    pipe_through [:browser, :authenticate_user]
+
+    resources "/pages", PageController
+  end
   #Scopes
   # New Route for redirects
   # scope "/", HelloWeb do
