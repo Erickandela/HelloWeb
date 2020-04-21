@@ -43,6 +43,8 @@ defmodule HelloWeb.Router do
 
     get "/", PageController, :index
     resources "/users", UserController
+    resources "/sessions", SessionController, only: [:new, :create, :delete],
+    singleton: true
     # get "/", PageController, :show
     # get "/our_path/:id", HelloController, :show
     #resources "/reviews", ReviewController
@@ -64,6 +66,17 @@ defmodule HelloWeb.Router do
     #resources "/comments", CommentController, except: [:delete]
   end
 
+  defp authenticate_user(conn, _) do
+    case get_session(conn, :user_id) do
+      nil ->
+        conn
+        |> Phoenix.Controller.put_flash(:error, "Login required")
+        |> Phoenix.Controller.redirect(to: "/")
+        |> halt()
+      user_id ->
+        assign(conn, :current_user, Hello.Accounts.get_user!(user_id))
+      end
+  end
   #Scopes
   # New Route for redirects
   # scope "/", HelloWeb do
