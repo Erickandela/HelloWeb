@@ -2,9 +2,12 @@ defmodule Hello.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Hello.Accounts.Credential
+
   schema "users" do
     field :username, :string
     field :name, :string
+    has_one :credential, Credential
 
     timestamps()
   end
