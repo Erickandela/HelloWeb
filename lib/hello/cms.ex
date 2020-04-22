@@ -221,4 +221,12 @@ defmodule Hello.CMS do
   def change_author(%Author{} = author) do
     Author.changeset(author, %{})
   end
+
+  def inc_page_views(%Page{} = page) do
+    {1, [%Page{views: views}]} =
+      from(p in Page, where: p.id == ^page.id, select: [:views])
+      |> Repo.update_all(inc: [views: 1])
+
+      put_in(page.views, views)
+  end
 end
